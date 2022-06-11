@@ -5,6 +5,7 @@ import User from "../models/user.js";
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
+
   try {
     const existingUser = await User.findOne({ email });
     if (!existingUser)
@@ -26,7 +27,16 @@ export const signin = async (req, res) => {
   }
 };
 export const signup = async (req, res) => {
-  const { name, tel, addr, email, password, confirmpassword, type } = req.body;
+  const {
+    lastname,
+    firstname,
+    tel,
+    addr,
+    email,
+    password,
+    confirmpassword,
+    type,
+  } = req.body;
 
   try {
     const existingUser = await User.findOne({ email });

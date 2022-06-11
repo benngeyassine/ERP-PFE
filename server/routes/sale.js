@@ -7,12 +7,13 @@ import {
   deleteSale,
 } from "../controllers/Sales.js";
 
-import auth from "../middleware/auth.js";
+//import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", auth, getSales);
-router.post("/", auth, createSales);
-router.patch("/:id", auth, updateSale);
-router.delete("/:id", auth, deleteSale);
+//router.get("/", auth, getSales);
+router.get("/", getSales);
+router.post("/", createSales);
+router.patch("/:id", updateSale);
+router.delete("/:id", deleteSale);
 export default router;

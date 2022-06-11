@@ -14,6 +14,7 @@ export default makeStyles((theme) => ({
     },
   },
   avatar: {
+    border: 0,
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },

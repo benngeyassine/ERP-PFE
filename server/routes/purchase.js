@@ -7,12 +7,13 @@ import {
   deletePurchase,
 } from "../controllers/Purchases.js";
 
-import auth from "../middleware/auth.js";
+//import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", auth, getPurchases);
-router.post("/", auth, createPurchases);
-router.patch("/:id", auth, updatePurchase);
-router.delete("/:id", auth, deletePurchase);
+//router.get("/", auth, getPurchases);
+router.get("/", getPurchases);
+router.post("/", createPurchases);
+router.patch("/:id", updatePurchase);
+router.delete("/:id", deletePurchase);
 export default router;

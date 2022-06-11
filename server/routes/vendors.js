@@ -7,12 +7,13 @@ import {
   deleteVendor,
 } from "../controllers/Vendors.js";
 
-import auth from "../middleware/auth.js";
+//import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", auth, getVendors);
-router.post("/", auth, createVendors);
-router.patch("/:id", auth, updateVendor);
-router.delete("/:id", auth, deleteVendor);
+//router.get("/", auth, getVendors);
+router.get("/", getVendors);
+router.post("/", createVendors);
+router.patch("/:id", updateVendor);
+router.delete("/:id", deleteVendor);
 export default router;

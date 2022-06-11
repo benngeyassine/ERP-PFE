@@ -7,10 +7,10 @@ import {
   Typography,
   Container,
 } from "@material-ui/core";
-
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+// import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.jpg";
 
 import useStyle from "./styles";
@@ -19,21 +19,21 @@ import { signin } from "../../actions/auth";
 
 const Auth = () => {
   const classes = useStyle();
+  let navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(true);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
   const dispatch = useDispatch();
-  const Navigate = useNavigate();
   const handleShowPassword = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(formData);
-    dispatch(signin(formData, Navigate));
+    dispatch(signin(formData));
   };
 
   const handleChange = (e) => {
@@ -46,7 +46,7 @@ const Auth = () => {
         <Avatar
           alt="Vaga Alarm"
           src={logo}
-          sx={{ width: 24, height: 24 }}
+          sx={{ width: 60, height: 60 }}
           className={classes.avatar}
         />
         <Typography variant="h5">Sign In</Typography>

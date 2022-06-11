@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 
-const productSchema = mongoose.Schema({
+const purchaseSchema = mongoose.Schema({
   purchase_date: Date,
+  payment_method: String,
   purchase_amount: Number,
   productId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -21,5 +22,5 @@ const productSchema = mongoose.Schema({
   },
 });
 
-const product = mongoose.model("product", productSchema);
-export default product;
+const purchase = mongoose.model("purchase", purchaseSchema);
+export default purchase;

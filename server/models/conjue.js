@@ -1,17 +1,12 @@
 import mongoose from "mongoose";
 
 const saleSchema = mongoose.Schema({
-  sale_date: Date,
-  sale_amount: Number,
-  payment_method: String,
-  productId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "product",
+  motif: Date,
+  begin_date: {
+    type: Date,
   },
-  costumerId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "costumer",
-  },
+  nombre_de_jour: Number,
+  status: String,
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",

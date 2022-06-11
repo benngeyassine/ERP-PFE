@@ -7,12 +7,12 @@ import {
   deleteProduct,
 } from "../controllers/Products.js";
 
-import auth from "../middleware/auth.js";
+//import auth from "../middleware/auth.js";
 
 const router = express.Router();
-
-router.get("/", auth, getProducts);
-router.post("/", auth, createProducts);
-router.patch("/:id", auth, updateProduct);
-router.delete("/:id", auth, deleteProduct);
+//router.get("/", auth, getProducts);
+router.get("/", getProducts);
+router.post("/", createProducts);
+router.patch("/:id", updateProduct);
+router.delete("/:id", deleteProduct);
 export default router;

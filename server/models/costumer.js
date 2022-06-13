@@ -5,6 +5,7 @@ const costumerSchema = mongoose.Schema({
   addr: String,
   tel: Number,
   note: String,
+  email: String,
   createdAt: {
     type: Date,
     default: new Date(),

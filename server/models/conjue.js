@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+const schema = new Schema({ _id: Number });
+
 const saleSchema = mongoose.Schema({
   motif: Date,
   begin_date: {

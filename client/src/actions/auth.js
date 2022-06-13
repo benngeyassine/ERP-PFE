@@ -16,15 +16,12 @@ export const signin = (formData) => async (dispatch) => {
       },
     })
       .then((res) => {
-        console.log({ res });
         dispatch({ type: AUTH, payload: res?.data });
-        // navigate("/home");
+        window.location.reload();
       })
       .catch((err) => {
         console.log({ err });
       });
-
-    // Navigate();
   } catch (error) {
     console.log(error);
   }

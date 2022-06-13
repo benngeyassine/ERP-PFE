@@ -1,2 +1,10 @@
-export const AUTH ='AUTH' ;
-export const LOGOUT ='LOGOUT' ;
+export const AUTH = "AUTH";
+export const LOGOUT = "LOGOUT";
+export const GETCUSTOMER = "GETCUSTOMER";
+export const CREATECUSTOMER = "CREATECUSTOMER";
+export const UPDATECUSTOMER = "UPDATECUSTOMER";
+export const DELETECUSTOMER = "DELETECUSTOMER";
+export const GETPRODUCT = "GETPRODUCT";
+export const CREATEPRODUCT = "CREATEPRODUCT";
+export const UPDATEPRODUCT = "UPDATEPRODUCT";
+export const DELETEPRODUCT = "DELETEPRODUCT";

@@ -32,7 +32,7 @@ export const updateVendor = async (req, res) => {
 
   const updatedVendor = await Vendor.findByIdAndUpdate(
     id,
-    { ...vendor, _id },
+    { ...vendor },
     {
       new: true,
     }

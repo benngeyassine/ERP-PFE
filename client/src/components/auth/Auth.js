@@ -7,10 +7,8 @@ import {
   Typography,
   Container,
 } from "@material-ui/core";
-import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-// import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.jpg";
 
 import useStyle from "./styles";
@@ -19,7 +17,6 @@ import { signin } from "../../actions/auth";
 
 const Auth = () => {
   const classes = useStyle();
-  let navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(true);
   const [formData, setFormData] = useState({
@@ -32,7 +29,6 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch(signin(formData));
   };
 

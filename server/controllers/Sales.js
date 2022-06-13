@@ -32,7 +32,7 @@ export const updateSale = async (req, res) => {
 
   const updatedSale = await Sale.findByIdAndUpdate(
     id,
-    { ...sale, _id },
+    { ...sale },
     {
       new: true,
     }

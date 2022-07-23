@@ -19,32 +19,32 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 const products = [
   {
     id: uuid(),
-    name: "Dropbox",
+    name: "U series PTZ camera",
     imageUrl: "/static/images/products/product_1.png",
     updatedAt: subHours(Date.now(), 2),
   },
   {
     id: uuid(),
-    name: "Medium Corporation",
+    name: "2MP(1080p) Indoor mini Box Network Camera with AI Engine",
     imageUrl: "/static/images/products/product_2.png",
     updatedAt: subHours(Date.now(), 2),
   },
   {
     id: uuid(),
-    name: "Slack",
+    name: "i-PRO Extreme H.265 Bullet camera",
     imageUrl: "/static/images/products/product_3.png",
     updatedAt: subHours(Date.now(), 3),
   },
   {
     id: uuid(),
-    name: "Lyft",
+    name: "Pan-tilting Network Camera",
     imageUrl: "/static/images/products/product_4.png",
     updatedAt: subHours(Date.now(), 5),
   },
   {
     id: uuid(),
-    name: "GitHub",
-    imageUrl: "/static/images/products/product_5.png",
+    name: "Magnetic GF-07 Mini Real-Time GPS Tracker",
+    imageUrl: "/static/images/products/product_5.jpg",
     updatedAt: subHours(Date.now(), 9),
   },
 ];

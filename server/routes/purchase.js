@@ -7,7 +7,7 @@ import {
   deletePurchase,
 } from "../controllers/Purchases.js";
 
-//import auth from "../middleware/auth.js";
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 

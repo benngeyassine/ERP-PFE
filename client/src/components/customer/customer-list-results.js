@@ -19,7 +19,7 @@ import {
 import IconButton from "@mui/material/IconButton";
 import DeleteCostumer from "./DeleteCostumer";
 import { getInitials } from "./get-initials";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import ModeEditRoundedIcon from "@mui/icons-material/ModeEditRounded";
 import { useSelector } from "react-redux";
 
 export const CustomerListResults = ({
@@ -161,6 +161,7 @@ export const CustomerListResults = ({
                       sx={{
                         alignItems: "center",
                         display: "flex",
+                        width: "0%",
                       }}
                     >
                       <IconButton
@@ -171,7 +172,7 @@ export const CustomerListResults = ({
                           setOpen(true);
                         }}
                       >
-                        <ModeEditIcon />
+                        <ModeEditRoundedIcon color="secondary" />
                       </IconButton>
                       <DeleteCostumer customer={customer} id={customer._id} />
                     </TableCell>

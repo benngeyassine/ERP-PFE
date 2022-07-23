@@ -6,10 +6,10 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { updateCostumer } from "../../actions/costumers";
+import { updateEmployer } from "../../actions/employers";
 
-function EditCostumerForm({ open, handleClose, selectedCustomer }) {
-  const [value, setValue] = React.useState(selectedCustomer);
+function EditEmployerForm({ open, handleClose, selectedEmployer }) {
+  const [value, setValue] = React.useState(selectedEmployer);
   const handleChange = (field, value) => {
     setValue((prevState) => {
       return {
@@ -21,8 +21,8 @@ function EditCostumerForm({ open, handleClose, selectedCustomer }) {
   const dispatch = useDispatch();
 
   const submit = () => {
-    const id = selectedCustomer?._id;
-    const url = "http://localhost:5000/costumer";
+    const id = selectedEmployer?._id;
+    const url = "http://localhost:5000/user";
 
     axios({
       method: "patch",
@@ -32,7 +32,7 @@ function EditCostumerForm({ open, handleClose, selectedCustomer }) {
     })
       .then((res) => {
         console.log({ res });
-        dispatch(updateCostumer(res?.data));
+        dispatch(updateEmployer(res?.data));
         handleClose();
       })
       .catch((err) => {
@@ -41,7 +41,7 @@ function EditCostumerForm({ open, handleClose, selectedCustomer }) {
   };
   return (
     <Dialog maxWidth="md" open={open} onClose={handleClose}>
-      <DialogTitle>Update costumer</DialogTitle>
+      <DialogTitle>Update employer</DialogTitle>
       <form>
         <div
           style={{
@@ -51,15 +51,27 @@ function EditCostumerForm({ open, handleClose, selectedCustomer }) {
           }}
         >
           <TextField
-            label="Name"
+            label="Last Name"
             variant="outlined"
             style={{ marginBottom: "10px", width: "95%" }}
-            name="name"
-            value={value?.name}
+            name="lastname"
+            value={value?.lastname}
             margin="dense"
             onChange={(el) => {
               const value = el.target.value;
-              handleChange("name", value);
+              handleChange("lastname", value);
+            }}
+          />
+          <TextField
+            label="First Name"
+            variant="outlined"
+            style={{ marginBottom: "10px", width: "95%" }}
+            name="firstname"
+            value={value?.firstname}
+            margin="dense"
+            onChange={(el) => {
+              const value = el.target.value;
+              handleChange("firstname", value);
             }}
           />
           <TextField
@@ -76,6 +88,18 @@ function EditCostumerForm({ open, handleClose, selectedCustomer }) {
             style={{ marginBottom: "10px", width: "95%" }}
           />
           <TextField
+            label="Address"
+            variant="outlined"
+            style={{ marginBottom: "10px", width: "95%" }}
+            name="addr"
+            value={value?.addr}
+            margin="dense"
+            onChange={(el) => {
+              const value = el.target.value;
+              handleChange("addr", value);
+            }}
+          />
+          <TextField
             label="Email"
             variant="outlined"
             name="email"
@@ -89,27 +113,27 @@ function EditCostumerForm({ open, handleClose, selectedCustomer }) {
           />
 
           <TextField
-            label="Address"
+            label="Password"
             variant="outlined"
             margin="dense"
-            name="addr"
-            value={value?.addr}
+            name="password"
+            value={value?.password}
             onChange={(el) => {
               const value = el.target.value;
-              handleChange("addr", value);
+              handleChange("password", value);
             }}
             style={{ marginBottom: "10px", width: "95%" }}
           />
 
           <TextField
-            label="Note"
+            label="Confirm Password"
             variant="outlined"
-            name="note"
+            name="confirmpassword"
             margin="dense"
-            value={value?.note}
+            value={value?.confirmpassword}
             onChange={(el) => {
               const value = el.target.value;
-              handleChange("note", value);
+              handleChange("confirmpassword", value);
             }}
             style={{ marginBottom: "10px", width: "95%" }}
           />
@@ -125,4 +149,4 @@ function EditCostumerForm({ open, handleClose, selectedCustomer }) {
   );
 }
 
-export default EditCostumerForm;
+export default EditEmployerForm;

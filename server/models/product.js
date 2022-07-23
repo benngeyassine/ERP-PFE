@@ -5,6 +5,7 @@ const productSchema = mongoose.Schema({
   price: Number,
   ref: String,
   amount: Number,
+  selectedFile: String,
   createdAt: {
     type: Date,
     default: new Date(),

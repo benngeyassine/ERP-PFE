@@ -17,7 +17,7 @@ export const TasksProgress = (props) => (
       <Grid container spacing={3} sx={{ justifyContent: "space-between" }}>
         <Grid item>
           <Typography color="textSecondary" gutterBottom variant="overline">
-            TASKS PROGRESS
+            PROJECT PROGRESS
           </Typography>
           <Typography color="textPrimary" variant="h4">
             75.5%

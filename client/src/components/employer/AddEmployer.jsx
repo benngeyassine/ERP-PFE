@@ -4,26 +4,32 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
 import axios from "axios";
-import { createCostumer } from "../../actions/costumers";
+import { createEmployer } from "../../actions/employers";
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { TextField } from "formik-material-ui";
 
-const url = "http://localhost:5000/costumer";
+const url = "http://localhost:5000/user";
 
 const initialValues = {
-  name: "",
+  lastname: "",
+  firstname: "",
   tel: "",
-  email: "",
   addr: "",
-  note: "",
+  email: "",
+  password: "",
+  confirmpassword: "",
+  type: "",
 };
 let validationSchema = Yup.object().shape({
-  name: Yup.string().required("Required"),
+  lastname: Yup.string().required("Required"),
+  firstname: Yup.string().required("Required"),
   tel: Yup.number().required("Required"),
-  email: Yup.string().email("Invalid email").required("Required"),
   addr: Yup.string().required("Required"),
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string().required("Required"),
+  confirmpassword: Yup.string().required("Required"),
 });
 // axios({
 //   method: "post",
@@ -32,12 +38,12 @@ let validationSchema = Yup.object().shape({
 // })
 //   .then((res) => {
 //     console.log({ res });
-//     dispatch(createCostumer(res?.data));
+//     dispatch(createEmployer(res?.data));
 //   })
 //   .catch((err) => {
 //     console.log({ err });
 //   });
-const UserForm = ({ open, handleClose, selectedCustomer }) => {
+const UserForm = ({ open, handleClose, selectedEmployer }) => {
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
@@ -49,7 +55,7 @@ const UserForm = ({ open, handleClose, selectedCustomer }) => {
     })
       .then((res) => {
         console.log({ res });
-        dispatch(createCostumer(res?.data));
+        dispatch(createEmployer(res?.data));
         handleClose();
       })
       .catch((err) => {
@@ -59,7 +65,7 @@ const UserForm = ({ open, handleClose, selectedCustomer }) => {
   };
   return (
     <Dialog maxWidth="md" open={open} onClose={handleClose}>
-      <DialogTitle>Create costumer</DialogTitle>
+      <DialogTitle>Create employer</DialogTitle>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -76,11 +82,19 @@ const UserForm = ({ open, handleClose, selectedCustomer }) => {
                 }}
               >
                 <Field
-                  label="Name"
+                  label="First Name"
                   variant="outlined"
                   style={{ marginBottom: "10px", width: "95%" }}
-                  name="name"
-                  value={values.name}
+                  name="firstname"
+                  value={values.firstname}
+                  component={TextField}
+                />
+                <Field
+                  label="Last Name"
+                  variant="outlined"
+                  style={{ marginBottom: "10px", width: "95%" }}
+                  name="lastname"
+                  value={values.lastname}
                   component={TextField}
                 />
                 <Field
@@ -93,6 +107,14 @@ const UserForm = ({ open, handleClose, selectedCustomer }) => {
                   style={{ marginBottom: "10px", width: "95%" }}
                 />
                 <Field
+                  label="Address"
+                  variant="outlined"
+                  style={{ marginBottom: "10px", width: "95%" }}
+                  name="addr"
+                  value={values.addr}
+                  component={TextField}
+                />
+                <Field
                   label="Email"
                   variant="outlined"
                   name="email"
@@ -102,19 +124,19 @@ const UserForm = ({ open, handleClose, selectedCustomer }) => {
                 />
 
                 <Field
-                  label="Address"
+                  label="Password"
                   variant="outlined"
-                  name="addr"
-                  value={values.addr}
+                  name="password"
+                  value={values.password}
                   component={TextField}
                   style={{ marginBottom: "10px", width: "95%" }}
                 />
 
                 <Field
-                  label="Note"
+                  label="Confirm Password"
                   variant="outlined"
-                  name="note"
-                  value={values.note}
+                  name="confirmpassword"
+                  value={values.confirmpassword}
                   style={{ marginBottom: "10px", width: "95%" }}
                   component={TextField}
                 />

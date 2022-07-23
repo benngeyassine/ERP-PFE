@@ -22,7 +22,7 @@ export const NavItem = (props) => {
     >
       <Link to={href} passHref>
         <Button
-          component="a"
+          //component="a"
           startIcon={icon}
           disableRipple
           onClick={() => {
@@ -32,15 +32,16 @@ export const NavItem = (props) => {
             }
           }}
           sx={{
+            textDecoration: "none",
             backgroundColor: active && "rgba(255,255,255, 0.08)",
             borderRadius: 1,
             color: active ? "secondary.main" : "neutral.300",
             fontWeight: active && "fontWeightBold",
-            justifyContent: "flex-start",
+            justifyContent: "space-between",
             px: 3,
             textAlign: "left",
             textTransform: "none",
-            width: "100%",
+            py: "11px",
             "& .MuiButton-startIcon": {
               color: active ? "secondary.main" : "neutral.400",
             },

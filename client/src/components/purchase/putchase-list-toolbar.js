@@ -11,14 +11,14 @@ import {
   Typography,
 } from "@mui/material";
 import { Search as SearchIcon } from "../icons/search";
-import EditCostumerForm from "./EditCostumerForm";
-import AddCostumer from "./AddCostumer";
-export const CustomerListToolbar = (props) => {
-  const { open, setOpen, selectedCustomer, setSelectedCustomer } = props;
+import EditPurchaseForm from "./EditPurchaseForm";
+import AddPurchase from "./AddPurchase";
+export const PurchaseListToolbar = (props) => {
+  const { open, setOpen, selectedPurchase, setSelectedPurchase } = props;
 
   const handleClickOpen = () => {
     setOpen(true);
-    setSelectedCustomer(null);
+    setSelectedPurchase(null);
   };
 
   const handleClose = () => {
@@ -26,15 +26,15 @@ export const CustomerListToolbar = (props) => {
   };
   return (
     <Box {...props}>
-      {selectedCustomer ? (
-        <EditCostumerForm
-          selectedCustomer={selectedCustomer}
+      {selectedPurchase ? (
+        <EditPurchaseForm
+          selectedPurchase={selectedPurchase}
           handleClose={handleClose}
           open={open}
         />
       ) : (
-        <AddCostumer
-          selectedCustomer={selectedCustomer}
+        <AddPurchase
+          selectedPurchase={selectedPurchase}
           handleClose={handleClose}
           open={open}
         />
@@ -58,11 +58,11 @@ export const CustomerListToolbar = (props) => {
           }}
           variant="h4"
         >
-          Customers
+          Purchases
         </Typography>
         <Box sx={{ m: 1 }}>
           <Button onClick={handleClickOpen} color="primary" variant="contained">
-            Add Customers
+            Create Purchase
           </Button>
         </Box>
       </Box>
@@ -81,7 +81,7 @@ export const CustomerListToolbar = (props) => {
                     </InputAdornment>
                   ),
                 }}
-                placeholder="Search customer"
+                placeholder="Search purchase"
                 variant="outlined"
               />
             </Box>

@@ -17,61 +17,61 @@ import {
   Typography,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
-import DeleteCostumer from "./DeleteCostumer";
+import DeleteEmployer from "./DeleteEmployer";
 import { getInitials } from "./get-initials";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { useSelector } from "react-redux";
 
-export const CustomerListResults = ({
+export const EmployerListResults = ({
   open,
   setOpen,
-  selectedCustomer,
-  setSelectedCustomer,
-  // customers,
+  selectedEmployer,
+  setSelectedEmployer,
+  // employers,
   ...rest
 }) => {
-  const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
+  const [selectedEmployerIds, setSelectedEmployerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
-  const customers = useSelector((state) => state?.costumerReducers?.costumers);
-  console.log({ customers });
+  const employers = useSelector((state) => state?.employerReducers?.employers);
+  console.log({ employers });
   const handleSelectAll = (event) => {
-    let newSelectedCustomerIds;
+    let newSelectedEmployerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = customers?.map((customer) => customer.id);
+      newSelectedEmployerIds = employers?.map((employer) => employer.id);
     } else {
-      newSelectedCustomerIds = [];
+      newSelectedEmployerIds = [];
     }
 
-    setSelectedCustomerIds(newSelectedCustomerIds);
+    setSelectedEmployerIds(newSelectedEmployerIds);
   };
 
   const handleSelectOne = (event, id) => {
-    const selectedIndex = selectedCustomerIds.indexOf(id);
-    let newSelectedCustomerIds = [];
+    const selectedIndex = selectedEmployerIds.indexOf(id);
+    let newSelectedEmployerIds = [];
 
     if (selectedIndex === -1) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(
-        selectedCustomerIds,
+      newSelectedEmployerIds = newSelectedEmployerIds.concat(
+        selectedEmployerIds,
         id
       );
     } else if (selectedIndex === 0) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(
-        selectedCustomerIds.slice(1)
+      newSelectedEmployerIds = newSelectedEmployerIds.concat(
+        selectedEmployerIds.slice(1)
       );
-    } else if (selectedIndex === selectedCustomerIds?.length - 1) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(
-        selectedCustomerIds.slice(0, -1)
+    } else if (selectedIndex === selectedEmployerIds?.length - 1) {
+      newSelectedEmployerIds = newSelectedEmployerIds.concat(
+        selectedEmployerIds.slice(0, -1)
       );
     } else if (selectedIndex > 0) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(
-        selectedCustomerIds.slice(0, selectedIndex),
-        selectedCustomerIds.slice(selectedIndex + 1)
+      newSelectedEmployerIds = newSelectedEmployerIds.concat(
+        selectedEmployerIds.slice(0, selectedIndex),
+        selectedEmployerIds.slice(selectedIndex + 1)
       );
     }
 
-    setSelectedCustomerIds(newSelectedCustomerIds);
+    setSelectedEmployerIds(newSelectedEmployerIds);
   };
 
   const handleLimitChange = (event) => {
@@ -90,42 +90,42 @@ export const CustomerListResults = ({
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
-                    checked={selectedCustomerIds?.length === customers?.length}
+                    checked={selectedEmployerIds?.length === employers?.length}
                     color="primary"
                     indeterminate={
-                      selectedCustomerIds?.length > 0 &&
-                      selectedCustomerIds?.length < customers?.length
+                      selectedEmployerIds?.length > 0 &&
+                      selectedEmployerIds?.length < employers?.length
                     }
                     onChange={handleSelectAll}
                   />
                 </TableCell>
                 <TableCell>Name</TableCell>
+                <TableCell>Phone</TableCell>
+
+                <TableCell>Adresse</TableCell>
                 <TableCell>Email</TableCell>
 
-                <TableCell>Phone</TableCell>
-                <TableCell>Adresse</TableCell>
-
-                <TableCell>Note</TableCell>
-                <TableCell>Registration date</TableCell>
+                <TableCell>Type</TableCell>
+                <TableCell>Created At</TableCell>
 
                 <TableCell>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {customers?.length > 0 &&
-                customers?.slice(0, limit)?.map((customer) => (
+              {employers?.length > 0 &&
+                employers?.slice(0, limit)?.map((employer) => (
                   <TableRow
                     hover
-                    key={customer.id}
-                    selected={selectedCustomerIds.indexOf(customer.id) !== -1}
+                    key={employer.id}
+                    selected={selectedEmployerIds.indexOf(employer.id) !== -1}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
                         checked={
-                          selectedCustomerIds.indexOf(customer.id) !== -1
+                          selectedEmployerIds.indexOf(employer.id) !== -1
                         }
                         onChange={(event) =>
-                          handleSelectOne(event, customer.id)
+                          handleSelectOne(event, employer.id)
                         }
                         value="true"
                       />
@@ -141,21 +141,22 @@ export const CustomerListResults = ({
                           src="https://cdn-icons.flaticon.com/png/128/1224/premium/1224849.png?token=exp=1655050334~hmac=167f5f9b7e27e67c0f710a204bec6731"
                           sx={{ mr: 2 }}
                         >
-                          {getInitials(customer.name)}
+                          {getInitials(employer.name)}
                         </Avatar>
                         <Typography color="textPrimary" variant="body1">
-                          {customer.name}
+                          {employer.name}
                         </Typography>
                       </Box>
                     </TableCell>
-                    <TableCell>{customer.email}</TableCell>
-                    <TableCell>{customer.tel}</TableCell>
-                    <TableCell>{customer.addr}</TableCell>
+                    <TableCell>{employer.tel}</TableCell>
+                    <TableCell>{employer.addr}</TableCell>
 
-                    <TableCell>{customer.note}</TableCell>
+                    <TableCell>{employer.email}</TableCell>
+
+                    <TableCell>{employer.type}</TableCell>
 
                     <TableCell>
-                      {format(new Date(customer.createdAt), "dd/MM/yyyy")}
+                      {format(new Date(employer.createdAt), "dd/MM/yyyy")}
                     </TableCell>
                     <TableCell
                       sx={{
@@ -166,14 +167,14 @@ export const CustomerListResults = ({
                       <IconButton
                         role="button"
                         onClick={() => {
-                          console.log({ customer });
-                          setSelectedCustomer(customer);
+                          console.log({ employer });
+                          setSelectedEmployer(employer);
                           setOpen(true);
                         }}
                       >
                         <ModeEditIcon />
                       </IconButton>
-                      <DeleteCostumer customer={customer} id={customer._id} />
+                      <DeleteEmployer employer={employer} id={employer._id} />
                     </TableCell>
                   </TableRow>
                 ))}
@@ -183,7 +184,7 @@ export const CustomerListResults = ({
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={customers?.length}
+        count={employers?.length}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleLimitChange}
         page={page}
@@ -194,6 +195,6 @@ export const CustomerListResults = ({
   );
 };
 
-CustomerListResults.propTypes = {
-  customers: PropTypes.array.isRequired,
+EmployerListResults.propTypes = {
+  employers: PropTypes.array.isRequired,
 };

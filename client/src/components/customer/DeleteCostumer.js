@@ -24,7 +24,7 @@ function DeleteCostumer({ id, customer }) {
   }
   return (
     <IconButton onClick={handelDelete}>
-      <DeleteForeverRoundedIcon />
+      <DeleteForeverRoundedIcon color="error" />
     </IconButton>
   );
 }

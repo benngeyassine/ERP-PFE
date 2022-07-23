@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box, Container } from "@mui/material";
 import { CustomerListResults } from "./customer-list-results";
 import { CustomerListToolbar } from "./customer-list-toolbar";
-import { v4 as uuid } from "uuid";
+//import { v4 as uuid } from "uuid";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { costumers } from "../../actions/costumers";

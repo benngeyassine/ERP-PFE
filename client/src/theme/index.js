@@ -1,6 +1,9 @@
 import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
+  a: {
+    textDecoration: "none",
+  },
   breakpoints: {
     values: {
       xs: 0,

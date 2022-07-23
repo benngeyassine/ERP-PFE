@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Box, Container } from "@mui/material";
-import { CustomerListResults } from "./customer-list-results";
-import { CustomerListToolbar } from "./customer-list-toolbar";
-import { v4 as uuid } from "uuid";
+import { EmployerListResults } from "./employer-list-results";
+import { EmployerListToolbar } from "./employer-list-toolbar";
+//import { v4 as uuid } from "uuid";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import { costumers } from "../../actions/costumers";
+import { employers } from "../../actions/employers";
 import NotFound from "../404";
-export default function Costumers() {
+export default function Employers() {
   const dispatch = useDispatch();
-  const url = "http://localhost:5000/costumer";
+  const url = "http://localhost:5000/employer";
 
   useEffect(() => {
     axios({
@@ -19,7 +19,7 @@ export default function Costumers() {
     })
       .then((res) => {
         console.log({ res });
-        dispatch(costumers(res?.data));
+        dispatch(employers(res?.data));
       })
       .catch((err) => {
         console.log({ err });
@@ -27,7 +27,7 @@ export default function Costumers() {
   }, []);
 
   const [open, setOpen] = React.useState(false);
-  const [selectedCustomer, setSelectedCustomer] = useState();
+  const [selectedEmployer, setSelectedEmployer] = useState();
   let test = true;
   return (
     <Box
@@ -39,18 +39,18 @@ export default function Costumers() {
     >
       {test ? (
         <Container maxWidth={false}>
-          <CustomerListToolbar
+          <EmployerListToolbar
             open={open}
             setOpen={setOpen}
-            selectedCustomer={selectedCustomer}
-            setSelectedCustomer={setSelectedCustomer}
+            selectedEmployer={selectedEmployer}
+            setSelectedEmployer={setSelectedEmployer}
           />
           <Box sx={{ mt: 3 }}>
-            <CustomerListResults
+            <EmployerListResults
               open={open}
               setOpen={setOpen}
-              selectedCustomer={selectedCustomer}
-              setSelectedCustomer={setSelectedCustomer}
+              selectedEmployer={selectedEmployer}
+              setSelectedEmployer={setSelectedEmployer}
             />
           </Box>
         </Container>

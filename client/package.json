@@ -20,7 +20,7 @@
     "formik-material-ui": "^4.0.0-alpha.2",
     "moment": "^2.27.0",
     "react": "^16.14.0",
-    "react-chartjs-2": "^3.0.4",
+    "react-chartjs-2": "^3.3.0",
     "react-dom": "^16.14.0",
     "react-file-base64": "^1.0.3",
     "react-perfect-scrollbar": "^1.5.8",

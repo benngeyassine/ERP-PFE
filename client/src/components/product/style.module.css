@@ -1,0 +1,8 @@
+.conta {
+  display: flex;
+  align-items: center;
+  padding: auto;
+}
+.bigcrd {
+  width: 100px;
+}

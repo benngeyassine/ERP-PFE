@@ -1,6 +1,6 @@
 import React from "react";
 
-// import { Doughnut } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import {
   Box,
   Card,
@@ -10,9 +10,9 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import LaptopMacIcon from "@mui/icons-material/LaptopMac";
-import PhoneIcon from "@mui/icons-material/Phone";
-import TabletIcon from "@mui/icons-material/Tablet";
+import DoneAllRoundedIcon from "@mui/icons-material/DoneAllRounded";
+import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
+import RotateLeftRoundedIcon from "@mui/icons-material/RotateLeftRounded";
 
 export const TrafficByDevice = (props) => {
   const theme = useTheme();
@@ -20,14 +20,14 @@ export const TrafficByDevice = (props) => {
   const data = {
     datasets: [
       {
-        data: [63, 15, 22],
+        data: [73, 5, 22],
         backgroundColor: ["#3F51B5", "#e53935", "#FB8C00"],
         borderWidth: 8,
         borderColor: "#FFFFFF",
         hoverBorderColor: "#FFFFFF",
       },
     ],
-    labels: ["Desktop", "Tablet", "Mobile"],
+    labels: ["Completed", "Stopped", "Progress"],
   };
 
   const options = {
@@ -54,28 +54,29 @@ export const TrafficByDevice = (props) => {
 
   const devices = [
     {
-      title: "Desktop",
+      title: "Completed",
       value: 63,
-      icon: LaptopMacIcon,
+      icon: DoneAllRoundedIcon,
       color: "#3F51B5",
     },
     {
-      title: "Tablet",
+      title: "Progress",
       value: 15,
-      icon: TabletIcon,
-      color: "#E53935",
+      icon: RotateLeftRoundedIcon,
+      color: "#FB8C00",
     },
     {
-      title: "Mobile",
+      title: "Stopped",
       value: 23,
-      icon: PhoneIcon,
-      color: "#FB8C00",
+      icon: CancelRoundedIcon,
+
+      color: "#E53935",
     },
   ];
 
   return (
     <Card {...props}>
-      <CardHeader title="Traffic by Device" />
+      <CardHeader title="Project Static" />
       <Divider />
       <CardContent>
         <Box
@@ -83,7 +84,9 @@ export const TrafficByDevice = (props) => {
             height: 300,
             position: "relative",
           }}
-        ></Box>
+        >
+          <Doughnut data={data} options={options} />
+        </Box>
         <Box
           sx={{
             display: "flex",
@@ -99,7 +102,7 @@ export const TrafficByDevice = (props) => {
                 textAlign: "center",
               }}
             >
-              <Icon color="action" />
+              <Icon color="action" style={{ color }} />
               <Typography color="textPrimary" variant="body1">
                 {title}
               </Typography>

@@ -25,77 +25,77 @@ const orders = [
     ref: "CDD1049",
     amount: 30.5,
     customer: {
-      name: "Ekaterina Tankova",
+      name: "Dhia Charni",
     },
-    createdAt: 1555016400000,
-    status: "pending",
+    createdAt: "05/03/2022",
+    status: "Progress",
   },
   {
     id: uuid(),
     ref: "CDD1048",
     amount: 25.1,
     customer: {
-      name: "Cao Yu",
+      name: "Mahmoud Benali",
     },
-    createdAt: 1555016400000,
-    status: "delivered",
+    createdAt: "24/10/2021",
+    status: "Completed",
   },
   {
     id: uuid(),
     ref: "CDD1047",
     amount: 10.99,
     customer: {
-      name: "Alexa Richardson",
+      name: "Ridha Hammami",
     },
-    createdAt: 1554930000000,
-    status: "refunded",
+    createdAt: "9/08/2021",
+    status: "Stopped",
   },
   {
     id: uuid(),
     ref: "CDD1046",
     amount: 96.43,
     customer: {
-      name: "Anje Keizer",
+      name: "Amira Belaid",
     },
-    createdAt: 1554757200000,
-    status: "pending",
+    createdAt: "19/04/2022",
+    status: "Progress",
   },
   {
     id: uuid(),
     ref: "CDD1045",
     amount: 32.54,
     customer: {
-      name: "Clarke Gillebert",
+      name: "Yousef Dhawi",
     },
-    createdAt: 1554670800000,
-    status: "delivered",
+    createdAt: "12/01/2021",
+    status: "Completed",
   },
   {
     id: uuid(),
     ref: "CDD1044",
     amount: 16.76,
     customer: {
-      name: "Adam Denisov",
+      name: "Mohamad Ali Najar",
     },
-    createdAt: 1554670800000,
-    status: "delivered",
+    createdAt: "10/12/2021",
+    status: "Completed",
   },
 ];
 
 export const LatestOrders = (props) => (
   <Card {...props}>
-    <CardHeader title="Latest Orders" />
+    <CardHeader title="Projects" />
     <PerfectScrollbar>
       <Box sx={{ minWidth: 800 }}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Order Ref</TableCell>
+              <TableCell>Project Ref</TableCell>
               <TableCell>Customer</TableCell>
               <TableCell sortDirection="desc">
                 <Tooltip enterDelay={300} title="Sort">
                   <TableSortLabel active direction="desc">
-                    Date
+                    Begin Date
                   </TableSortLabel>
                 </Tooltip>
               </TableCell>
@@ -107,12 +107,12 @@ export const LatestOrders = (props) => (
               <TableRow hover key={order.id}>
                 <TableCell>{order.ref}</TableCell>
                 <TableCell>{order.customer.name}</TableCell>
-                <TableCell>{format(order.createdAt, "dd/MM/yyyy")}</TableCell>
+                <TableCell>{order.createdAt}</TableCell>
                 <TableCell>
                   <SeverityPill
                     color={
-                      (order.status === "delivered" && "success") ||
-                      (order.status === "refunded" && "error") ||
+                      (order.status === "Completed" && "success") ||
+                      (order.status === "Progress" && "error") ||
                       "warning"
                     }
                   >

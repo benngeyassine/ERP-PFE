@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import React from "react";
+import React, { useState } from "react";
 
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
@@ -15,7 +15,6 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import { UserCircle as UserCircleIcon } from "../icons/user-circle";
-import { Users as UsersIcon } from "../icons/users";
 import { Bell as BellIcon } from "../icons/bell";
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
@@ -25,7 +24,8 @@ const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
 
 export const DashboardNavbar = (props) => {
   const { onSidebarOpen, ...other } = props;
-
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  console.log(user);
   return (
     <>
       <DashboardNavbarRoot
@@ -63,12 +63,8 @@ export const DashboardNavbar = (props) => {
               <SearchIcon fontSize="small" />
             </IconButton>
           </Tooltip>
+
           <Box sx={{ flexGrow: 1 }} />
-          <Tooltip title="Contacts">
-            <IconButton sx={{ ml: 1 }}>
-              <UsersIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
           <Tooltip title="Notifications">
             <IconButton sx={{ ml: 1 }}>
               <Badge badgeContent={4} color="primary" variant="dot">

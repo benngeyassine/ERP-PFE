@@ -10,6 +10,10 @@ import productsRoutes from "./routes/products.js";
 import purchaseRoutes from "./routes/purchase.js";
 import saleRoutes from "./routes/sale.js";
 import vendorsRoutes from "./routes/vendors.js";
+import leaveRoutes from "./routes/leave.js";
+import presenceRoutes from "./routes/presence.js";
+import projectRoutes from "./routes/project.js";
+import taskRoutes from "./routes/task.js";
 
 const app = express();
 dotenv.config();
@@ -23,11 +27,17 @@ app.use("/products", productsRoutes);
 app.use("/purchase", purchaseRoutes);
 app.use("/sale", saleRoutes);
 app.use("/vendors", vendorsRoutes);
+app.use("/leave", leaveRoutes);
+app.use("/presence", presenceRoutes);
+app.use("/project", projectRoutes);
+app.use("/task", taskRoutes);
 
 const PORT = process.env.PORT || 5000;
 await mongoose
   .connect(process.env.CONNECTION_URL)
   .then(() =>
-    app.listen(PORT, () => console.log(`Server is running on port:${PORT} `))
+    app.listen(PORT, () =>
+      console.log(`Hey <3, My heart <3 is Runinig on port:${PORT} `)
+    )
   )
   .catch((error) => console.log(error.message));

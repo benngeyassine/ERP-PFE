@@ -8,6 +8,10 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "../src/theme";
 import Costumers from "./components/customer";
 import Products from "./components/product";
+import Employers from "./components/employer";
+import Purchase from "./components/purchase/index";
+import Sales from "./components/sales/index";
+import Projects from "./components/projects/index";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 const App = () => {
@@ -19,8 +23,7 @@ const App = () => {
           {!token ? (
             <Routes>
               <Route path="/login" element={<Auth />} />
-              <Route path="/" element={<Navigate replace to="/login" />} />
-              <Route path="/home" element={<Navigate replace to="/login" />} />
+              <Route path="*" element={<Navigate replace to="/login" />} />
             </Routes>
           ) : (
             <HomeLayout>
@@ -28,6 +31,10 @@ const App = () => {
                 <Route path="/home" element={<Home />} />
                 <Route path="/customers" element={<Costumers />} />
                 <Route path="/products" element={<Products />} />
+                <Route path="/employers" element={<Employers />} />
+                <Route path="/purchase" element={<Purchase />} />
+                <Route path="/sales" element={<Sales />} />
+                <Route path="/projects" element={<Projects />} />
                 <Route path="/" element={<Navigate replace to="/home" />} />
                 <Route
                   path="/login"

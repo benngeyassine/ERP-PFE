@@ -1,21 +1,20 @@
 /* eslint-disable react/react-in-jsx-scope */
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Divider, Drawer, useMediaQuery } from "@mui/material";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import { ChartBar as ChartBarIcon } from "../icons/chart-bar";
-import { Cog as CogIcon } from "../icons/cog";
-import { Lock as LockIcon } from "../icons/lock";
-import { Selector as SelectorIcon } from "../icons/selector";
-import { ShoppingBag as ShoppingBagIcon } from "../icons/shopping-bag";
-import { User as UserIcon } from "../icons/user";
-import { UserAdd as UserAddIcon } from "../icons/user-add";
-import { Users as UsersIcon } from "../icons/users";
-import { XCircle as XCircleIcon } from "../icons/x-circle";
-import { companyLogo } from "./logo.jpg";
+import { Box, Divider, Drawer, Typography, useMediaQuery } from "@mui/material";
+import PointOfSaleRoundedIcon from "@mui/icons-material/PointOfSaleRounded";
+import AssignmentIndRoundedIcon from "@mui/icons-material/AssignmentIndRounded";
+import LocalOfferRoundedIcon from "@mui/icons-material/LocalOfferRounded";
+import ReceiptRoundedIcon from "@mui/icons-material/ReceiptRounded";
+import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
+import InventoryRoundedIcon from "@mui/icons-material/InventoryRounded";
+import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded";
+import InsightsRoundedIcon from "@mui/icons-material/InsightsRounded";
+
+import Logo from "./logo.svg";
 import { NavItem } from "./nav-item";
 import { Link } from "react-router-dom";
-let token = localStorage.getItem("token");
+//let token = localStorage.getItem("token");
 
 export const DashboardSidebar = (props) => {
   const { open, onClose } = props;
@@ -23,7 +22,10 @@ export const DashboardSidebar = (props) => {
     defaultMatches: true,
     noSsr: false,
   });
-
+  let profile = localStorage.getItem("profile");
+  console.log({ profile: JSON.parse(profile) });
+  const role = JSON.parse(profile).type;
+  console.log({ roletes: role === "cm" });
   const content = (
     <>
       <Box
@@ -35,9 +37,9 @@ export const DashboardSidebar = (props) => {
       >
         <div>
           <Box sx={{ p: 3 }}>
-            <Link to="/" passHref>
+            <Link to="/" passHref underline="none">
               <a href="#/">
-                <img src={companyLogo} height={40} alt="VAGA ALARM" />
+                <img src={Logo} alt="VAGA ALARM" style={{ height: "100px" }} />
               </a>
             </Link>
           </Box>
@@ -54,7 +56,7 @@ export const DashboardSidebar = (props) => {
                 borderRadius: 1,
               }}
             >
-              Vaga Alarm
+              <Typography>Commercial</Typography>
             </Box>
           </Box>
         </div>
@@ -80,33 +82,52 @@ export const DashboardSidebar = (props) => {
           <NavItem
             key="Dashboard"
             href="/"
-            icon={<ChartBarIcon fontSize="small" />}
+            icon={<InsightsRoundedIcon fontSize="small" />}
             title="Dashboard"
           />
-          <NavItem
-            key="Customers"
-            href="/customers"
-            icon={<UsersIcon fontSize="small" />}
-            title="Customers"
-          />
-          <NavItem
-            key="Products"
-            href="/products"
-            icon={<ShoppingBagIcon fontSize="small" />}
-            title="Products"
-          />
+          {/* */}{" "}
+          {(role === "cm" || role === "pdg") && (
+            <>
+              <NavItem
+                key="Purchase"
+                href="/purchase"
+                icon={<PointOfSaleRoundedIcon fontSize="small" />}
+                title="Purchase invoice"
+              />
+
+              <NavItem
+                key="Sales"
+                href="/sales"
+                icon={<ReceiptRoundedIcon fontSize="small" />}
+                title="Sales receipt"
+              />
+              <NavItem
+                key="Customers"
+                href="/customers"
+                icon={<AssignmentIndRoundedIcon fontSize="small" />}
+                title="Customers"
+              />
+              <NavItem
+                key="Products"
+                href="/products"
+                icon={<LocalOfferRoundedIcon fontSize="small" />}
+                title="Products"
+              />
+            </>
+          )}
           <NavItem
             key="Employers"
             href="/employers"
-            icon={<UserIcon fontSize="small" />}
+            icon={<PersonRoundedIcon fontSize="small" />}
             title="employers"
           />
           <NavItem
-            key="logout"
-            href="/login"
-            icon={<LockIcon fontSize="small" />}
-            title="logout"
-          />
+            key="Projects"
+            href="/projects"
+            icon={<InventoryRoundedIcon fontSize="small" />}
+            title="Projects"
+          />{" "}
+          {/*   */}
         </Box>
         <Divider sx={{ borderColor: "#2D3748" }} />
         <Box
@@ -114,7 +135,14 @@ export const DashboardSidebar = (props) => {
             px: 2,
             py: 3,
           }}
-        ></Box>
+        >
+          <NavItem
+            key="logout"
+            href="/login"
+            icon={<ExitToAppRoundedIcon fontSize="small" />}
+            title="logout"
+          />
+        </Box>
       </Box>
     </>
   );

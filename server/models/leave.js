@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
-const schema = new Schema({ _id: Number });
-
-const saleSchema = mongoose.Schema({
-  motif: Date,
+const leaveSchema = mongoose.Schema({
   begin_date: {
     type: Date,
   },
-  nombre_de_jour: Number,
-  status: String,
+  end_date: {
+    type: Date,
+  },
+  pattern: String,
+  approved: Boolean,
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
@@ -19,5 +19,5 @@ const saleSchema = mongoose.Schema({
   },
 });
 
-const sale = mongoose.model("sale", saleSchema);
-export default sale;
+const leave = mongoose.model("leave", leaveSchema);
+export default leave;

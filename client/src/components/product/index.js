@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box, Container } from "@mui/material";
 import { ProductListResults } from "./product-list-results";
 import { ProductListToolbar } from "./product-list-toolbar";
-import { v4 as uuid } from "uuid";
+//import { v4 as uuid } from "uuid";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { products } from "../../actions/products";
@@ -24,11 +24,12 @@ export default function Products() {
       .catch((err) => {
         console.log({ err });
       });
-  }, []);
+  }, [dispatch]);
 
   const [open, setOpen] = React.useState(false);
   const [selectedProduct, setSelectedProduct] = useState();
   let test = true;
+
   return (
     <Box
       component="main"

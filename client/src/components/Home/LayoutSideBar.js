@@ -56,7 +56,13 @@ export const DashboardSidebar = (props) => {
                 borderRadius: 1,
               }}
             >
-              <Typography>Commercial</Typography>
+              {role === "cm" && <Typography>Commercial</Typography>}
+              {role === "pdg" && <Typography>PDG</Typography>}
+              {role === "hr" && <Typography>Humen Resource</Typography>}
+              {role === "admin" && <Typography>Admin</Typography>}
+              {role === "emp" && <Typography>Employer</Typography>}
+              {role === "" && <Typography>Employer</Typography>}
+              {role === "pm" && <Typography>Project Manger</Typography>}
             </Box>
           </Box>
         </div>

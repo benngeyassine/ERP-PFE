@@ -1,9 +1,9 @@
 import React from "react";
+import { NavItem } from "../home/nav-item";
 import { formatDistanceToNow, subHours } from "date-fns";
 import { v4 as uuid } from "uuid";
 import {
   Box,
-  Button,
   Card,
   CardHeader,
   Divider,
@@ -13,7 +13,6 @@ import {
   ListItemAvatar,
   ListItemText,
 } from "@mui/material";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const products = [
@@ -87,14 +86,12 @@ export const LatestProducts = (props) => (
         p: 2,
       }}
     >
-      <Button
+      <NavItem
+        key="View all"
+        href="/products"
+        title="View all"
         color="primary"
-        endIcon={<ArrowRightIcon />}
-        size="small"
-        variant="text"
-      >
-        View all
-      </Button>
+      />
     </Box>
   </Card>
 );
